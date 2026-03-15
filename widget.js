@@ -30,7 +30,7 @@
             border-radius: 50px;
             
             /* 1. Make it wide and less tall */
-            padding: 2px 30px; /* Very small top/bottom padding (2px), generous side padding (30px) */
+            padding: 5px 30px; /* Very small top/bottom padding (5px), generous side padding (30px) */
             min-width: 250px;  /* Ensures the button is wide even with short names */
             
             /* 2. Center everything */
