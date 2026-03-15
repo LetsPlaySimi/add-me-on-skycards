@@ -24,20 +24,37 @@
 
         /* --- BUTTON STYLE --- */
         .sc-add-button {
-            background-color: #2ECC71; /* Vibrant Green */
+            background-color: #2ECC71;
             color: white;
-            border: 2px solid #000000; /* Distinct Black Outline */
-            border-radius: 50px; /* Pillow Shape */
-            padding: 12px 24px;
-            font-weight: 800;
-            font-size: 16px;
-            text-transform: uppercase;
-            cursor: pointer;
-            box-shadow: 0 4px 0px rgba(0,0,0,0.2); /* Slight depth */
-            transition: all 0.1s ease;
+            border: 2px solid #000000;
+            border-radius: 50px;
+            
+            /* 1. Make it wide and less tall */
+            padding: 2px 30px; /* Very small top/bottom padding (2px), generous side padding (30px) */
+            min-width: 250px;  /* Ensures the button is wide even with short names */
+            
+            /* 2. Center everything */
             display: flex;
+            justify-content: center;
             align-items: center;
-            gap: 8px;
+            
+            /* 3. Logic for the fat, outlined text */
+            font-weight: 900;
+            cursor: pointer;
+            box-shadow: 0 4px 0px rgba(0,0,0,0.2);
+            transition: all 0.1s ease;
+            
+            /* 4. Fix the height issue caused by scaling */
+            overflow: visible; 
+            line-height: 1; 
+        }
+
+        /* Apply the scale specifically to the span inside so it doesn't clip */
+        .sc-add-button span {
+            display: inline-block;
+            transform: scale(1.3);
+            transform-origin: center;
+            white-space: nowrap; /* Prevents text from jumping to a second line */
         }
 
         .sc-add-button:hover {
