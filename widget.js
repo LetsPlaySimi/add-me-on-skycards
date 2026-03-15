@@ -13,36 +13,17 @@ if (!document.getElementById('skycards-global-styles')) {
     styleSheet.innerText = `
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap');
         .sc-widget-container { font-family: 'Montserrat', sans-serif;}
-        .sc-add-button { 
+        .sc-button { 
             background-color: #2ECC71; color: white; border: 2px solid #000; 
             border-radius: 50px;
-            padding: 5px 40px;
-            display: flex; justify-content: center; align-items: center; 
-            font-weight: 900; cursor: pointer; box-shadow: 0 4px 0px rgba(0,0,0,0.2);
+            justify-content: center;
+            align-items: center; 
+            font-weight: 900;
+            cursor: pointer;
+            box-shadow: 0 4px 0px rgba(0,0,0,0.2);
             line-height: 1; overflow: visible;
         }
-        .sc-add-button span { display: inline-block; transform: scale(1.3); white-space: nowrap; }
-
-        .sc-add-button-compact { 
-            background-color: #2ECC71; color: white; border: 2px solid #000; 
-            border-radius: 50px;
-            padding: 5px 5px;
-            font-weight: 900; cursor: pointer; box-shadow: 0 4px 0px rgba(0,0,0,0.2);
-            line-height: 1; overflow: visible;
-            min-width: 200px;
-            min-height:50px;
-        }
-        .sc-add-button-compact span { display: inline-block; transform: scale(1.3); white-space: nowrap; }
-
-        .sc-open-button { 
-            background-color: #2ECC71; color: white; border: 2px solid #000; 
-            border-radius: 50px;
-            padding: 5px 5px;
-            display: flex; justify-content: center; align-items: center; 
-            font-weight: 900; cursor: pointer; box-shadow: 0 4px 0px rgba(0,0,0,0.2);
-            line-height: 1; overflow: visible;
-        }
-        .sc-open-button spawn { display: inline-block; transform: scale(1.3); white-space: nowrap; }
+        .sc-button span { display: inline-block; transform: scale(1.3); white-space: nowrap; }
 
         .sc-text-outline { -webkit-text-stroke: 2px #000; paint-order: stroke fill; font-weight: 900; }
         
@@ -76,7 +57,7 @@ customElements.define('sky-cards', class extends HTMLElement {
         // 2. Create the Button HTML
         this.innerHTML = `
             <div class="sc-widget-container">
-                <button class="sc-add-button">
+                <button class="sc-button" style="padding: 5px 40px;">
                     <span class="sc-text-outline">+ ADD ME ON SKYCARDS! </span>
                 </button>
             </div>
@@ -92,7 +73,6 @@ customElements.define('sky-cards', class extends HTMLElement {
                 <div style="font-size: 24px; margin-bottom: 20px;" class="sc-text-outline">${userName}</div>
                 <div class="sc-code-box">
                     <span>${userCode}</span>
-                </button>
                 </div>
                 <div class="sc-instructions">
                     <div class="sc-text-outline" style="margin-bottom: 10px;">How to add me:</div>
@@ -102,8 +82,8 @@ customElements.define('sky-cards', class extends HTMLElement {
             popupText = popupText + `
                         <li>
                             <div class="sc-widget-container">
-                                <button class="sc-open-button">
-                                    <span class="sc-text-outline" href="skycards://open" onclick="setTimeout(window.location.href = 'https://skycards.app', 500);">OPEN SKYCARDS™</span>
+                                <button class="sc-button" style="padding: 5px 5px; min-width: 200px;">
+                                    <span class="sc-text-outline" href="skycards://open">OPEN SKYCARDS™</span>
                                 </button>
                             </div>
                         </li>
@@ -127,7 +107,8 @@ customElements.define('sky-cards', class extends HTMLElement {
         document.body.appendChild(overlay);
 
         // 4. Events
-        this.querySelector('.sc-add-button').onclick = () => overlay.style.display = 'flex';
+        this.querySelector('.sc-button').onclick = () => overlay.style.display = 'flex';
+        if(window.isMobile()){overlay.querySelector('.sc-button').onclick = () => setTimeout(window.location.href = 'https://skycards.app', 500);}
         overlay.querySelector('.sc-close-x').onclick = () => overlay.style.display = 'none';
         overlay.onclick = (e) => { if(e.target === overlay) overlay.style.display = 'none'; };
     }
@@ -144,7 +125,7 @@ customElements.define('sky-cards-compact', class extends HTMLElement {
         // 2. Create the Button HTML
         this.innerHTML = `
             <div class="sc-widget-container">
-                <button class="sc-add-button-compact">
+                <button class="sc-button" style="padding: 5px 5px; min-width: 200px; min-height:50px;">
                     <span class="sc-text-outline">+ ADD ME</span><br><span class="sc-text-outline">ON SKYCARDS!</span>
                 </button>
             </div>
@@ -160,7 +141,6 @@ customElements.define('sky-cards-compact', class extends HTMLElement {
                 <div style="font-size: 24px; margin-bottom: 20px;" class="sc-text-outline">${userName}</div>
                 <div class="sc-code-box">
                     <span>${userCode}</span>
-                </button>
                 </div>
                 <div class="sc-instructions">
                     <div class="sc-text-outline" style="margin-bottom: 10px;">How to add me:</div>
@@ -170,7 +150,7 @@ customElements.define('sky-cards-compact', class extends HTMLElement {
             popupText = popupText + `
                         <li>
                             <div class="sc-widget-container">
-                                <button class="sc-open-button">
+                                <button class="sc-button" style="padding: 5px 5px; min-width: 200px;">
                                     <span class="sc-text-outline" href="skycards://open" onclick="setTimeout(window.location.href = 'https://skycards.app', 500);">OPEN SKYCARDS™</span>
                                 </button>
                             </div>
@@ -195,7 +175,8 @@ customElements.define('sky-cards-compact', class extends HTMLElement {
         document.body.appendChild(overlay);
 
         // 4. Events
-        this.querySelector('.sc-add-button-compact').onclick = () => overlay.style.display = 'flex';
+        this.querySelector('.sc-button').onclick = () => overlay.style.display = 'flex';
+        if(window.isMobile()){overlay.querySelector('.sc-button').onclick = () => setTimeout(window.location.href = 'https://skycards.app', 500);}
         overlay.querySelector('.sc-close-x').onclick = () => overlay.style.display = 'none';
         overlay.onclick = (e) => { if(e.target === overlay) overlay.style.display = 'none'; };
     }
