@@ -1,20 +1,19 @@
 /*
   SkyCards™ Profile Widget
-  Host this file on GitHub Pages.
-  Usage: <script src="[YOUR_GITHUB_PAGES_URL]/widget.js" data-name="Your Name" data-code="1234 5678 9012"></script>
+  Usage: <script src="https://letsplaysimi.github.io/add-me-on-skycards/widget.js" data-name="YourName" data-code="1234 5678 9123"></script>
 */
 
 (function() {
-    // 1. DATA EXTRACTION & SETUP
+    //Data extraction and setup
     const scripts = document.getElementsByTagName('script');
     const currentScript = scripts[scripts.length - 1];
     const userName = currentScript.getAttribute('data-name') || 'Unknown User';
     const userCode = currentScript.getAttribute('data-code') || '0000 0000 0000';
     const modalId = 'skycards-modal-' + Math.floor(Math.random() * 100000);
 
-    // 2. INJECT CSS STYLES (To match image_0.png, image_1.png, and image_2.png)
+    //Inject CSS styles
     const styles = `
-        /* Font similarity to images (Montserrat is a good free match) */
+        /* Font similar to SkyCards (Montserrat is a good free match) */
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap');
 
         .sc-widget-container {
@@ -23,7 +22,7 @@
             margin: 10px;
         }
 
-        /* --- BUTTON STYLE (image_0.png & image_1.png) --- */
+        /* --- BUTTON STYLE --- */
         .sc-add-button {
             background-color: #2ECC71; /* Vibrant Green */
             color: white;
@@ -52,7 +51,7 @@
             box-shadow: 0 0px 0px rgba(0,0,0,0.2);
         }
 
-        /* --- MODAL / POP-UP STYLE (image_1.png & image_2.png) --- */
+        /* --- MODAL / POP-UP STYLE --- */
         .sc-modal-overlay {
             display: none;
             position: fixed;
@@ -81,7 +80,7 @@
             box-sizing: border-box;
         }
 
-        /* --- CLOSE "X" BUTTON (image_2.png) --- */
+        /* --- CLOSE "X" BUTTON --- */
         .sc-close-x {
             position: absolute;
             top: -15px;
@@ -101,7 +100,7 @@
         }
         .sc-close-x:hover { background-color: #E74C3C; }
 
-        /* --- MODAL INTERNAL CONTENT (image_1.png) --- */
+        /* --- MODAL INTERNAL CONTENT --- */
         .sc-profile-name {
             font-weight: 800;
             font-size: 24px;
@@ -169,6 +168,16 @@
         .sc-instructions li {
             margin-bottom: 8px;
         }
+
+        .sc-text-outline {
+            /* Standard property */
+            text-stroke: 2px #000000;
+            /* Webkit prefix for compatibility (Chrome, Safari, Edge, mobile browsers) */
+            -webkit-text-stroke: 2px #000000;
+            
+            /* Optional: Improves rendering on some screens */
+            paint-order: stroke fill;
+        }
     `;
 
     const styleSheet = document.createElement("style");
@@ -176,15 +185,15 @@
     styleSheet.innerText = styles;
     document.head.appendChild(styleSheet);
 
-    // 3. CREATE HTML DOM ELEMENTS
+    // 3. Create HTML DOM elements
     
-    // The Button (Image_0)
+    // The button
     const container = document.createElement('div');
     container.className = 'sc-widget-container';
 
     const addBtn = document.createElement('button');
     addBtn.className = 'sc-add-button';
-    addBtn.innerHTML = `<span>+</span> ADD ME ON SKYCARDS!`;
+    addBtn.innerHTML = `<span class="sc-text-outline">+ ADD ME ON SKYCARDS!</span>`;
     container.appendChild(addBtn);
 
     // The Modal Overlay
@@ -195,12 +204,12 @@
     // SVG Icons
     const copyIconSvg = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>`;
 
-    // The Modal Content Window (Image_1 & Image_2)
+    // The Modal Content Window
     overlay.innerHTML = `
         <div class="sc-modal-content">
             <div class="sc-close-x" title="Close">×</div>
             
-            <div class="sc-profile-name">${userName}</div>
+            <div class="sc-profile-name sc-text-outline">${userName}</div>
             
             <div class="sc-code-label">My Code:</div>
             <div class="sc-code-box">
@@ -211,7 +220,7 @@
             </div>
 
             <div class="sc-instructions">
-                <div class="sc-instr-title">How to add me:</div>
+                <div class="sc-instr-title sc-text-outline">How to add me:</div>
                 <ol>
                     <li>Open the SkyCards™ App</li>
                     <li>Tap "Friends" in the bottom right corner</li>
@@ -223,7 +232,7 @@
         </div>
     `;
 
-    // 4. LOGIC & EVENT HANDLING
+    // 4. logic and event handling
     
     // Open modal
     addBtn.addEventListener('click', function() {
@@ -258,7 +267,7 @@
         });
     });
 
-    // 5. INITIALIZE (Place elements on the page)
+    // 5. Initialize (Place elements on the page)
     currentScript.parentNode.insertBefore(container, currentScript);
     document.body.appendChild(overlay);
 
