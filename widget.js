@@ -177,6 +177,8 @@
             
             /* Optional: Improves rendering on some screens */
             paint-order: stroke fill;
+
+            font-weight: 900;
         }
     `;
 
@@ -222,11 +224,11 @@
             <div class="sc-instructions">
                 <div class="sc-instr-title sc-text-outline">How to add me:</div>
                 <ol>
-                    <li>Open the SkyCards™ App</li>
-                    <li>Tap "Friends" in the bottom right corner</li>
-                    <li>Tap "+ ADD" in the top right corner</li>
-                    <li>Paste my code</li>
-                    <li>Tap "CONNECT"</li>
+                    <li class="sc-text-outline">Open the SkyCards™ App</li>
+                    <li class="sc-text-outline">Tap "Friends" in the bottom right corner</li>
+                    <li class="sc-text-outline">Tap "+ ADD" in the top right corner</li>
+                    <li class="sc-text-outline">Paste my code</li>
+                    <li class="sc-text-outline">Tap "CONNECT"</li>
                 </ol>
             </div>
         </div>
