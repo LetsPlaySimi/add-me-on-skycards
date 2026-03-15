@@ -10,7 +10,7 @@ Then you can place the button wherever you want:
 ```
 <sky-cards name="YourName" code="1234 5678 9123"></sky-cards>
 ```
-![alt text](https://github.com/LetsPlaySimi/add-me-on-skycards/blob/main/sky-cards.png?raw=true)
+![alt text](https://github.com/LetsPlaySimi/add-me-on-skycards/blob/main/sky-cards.png?raw=true)<br>
 or
 ```
 <sky-cards-compact name="YourName" code="1234 5678 9123"></sky-cards-compact>
