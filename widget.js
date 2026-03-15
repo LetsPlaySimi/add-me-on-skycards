@@ -201,7 +201,7 @@
 
     const addBtn = document.createElement('button');
     addBtn.className = 'sc-add-button';
-    addBtn.innerHTML = `<span class="sc-text-outline">+ ADD ME ON SKYCARDS!</span>`;
+    addBtn.innerHTML = `<span class="sc-text-outline" style="display:inline-block; transform:scale(1.3);">+ ADD ME ON SKYCARDS!</span>`;
     container.appendChild(addBtn);
 
     // The Modal Overlay
@@ -215,7 +215,7 @@
     // The Modal Content Window
     overlay.innerHTML = `
         <div class="sc-modal-content">
-            <div class="sc-close-x" title="Close">×</div>
+            <div class="sc-close-x" style="display:inline-block; transform:scale(1.3);" title="Close">×</div>
             
             <div class="sc-profile-name sc-text-outline">${userName}</div>
             
