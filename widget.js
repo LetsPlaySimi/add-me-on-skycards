@@ -1,8 +1,3 @@
-/*
-  SkyCards™ Profile Widget
-  Usage: <script src="https://letsplaysimi.github.io/add-me-on-skycards/widget.js" data-name="YourName" data-code="1234 5678 9123"></script>
-*/
-
 (function() {
     // Define the Custom Element
     customElements.define('sky-cards', class extends HTMLElement {
