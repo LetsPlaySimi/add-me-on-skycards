@@ -7,7 +7,9 @@ Simply import this script:
 <script src="https://letsplaysimi.github.io/add-me-on-skycards/widget.js"></script>
 ```
 Then you can place the button wherever you want:
+```
 <sky-cards name="YourName" code="1234 5678 9123"></sky-cards>
+```
 ![alt text](https://github.com/LetsPlaySimi/add-me-on-skycards/blob/main/sky-cards.png?raw=true)
 or
 ```
