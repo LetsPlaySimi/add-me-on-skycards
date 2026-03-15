@@ -46,14 +46,6 @@
             box-shadow: 0 2px 0px rgba(0,0,0,0.2);
         }
 
-        .sc-add-button:active {
-            transform: translateY(3px);
-            box-shadow: 0 0px 0px rgba(0,0,0,0.2);
-            font-size: 22px; 
-            padding: 10px 15px; 
-            font-weight: 900;
-        }
-
         /* --- MODAL / POP-UP STYLE --- */
         .sc-modal-overlay {
             display: none;
