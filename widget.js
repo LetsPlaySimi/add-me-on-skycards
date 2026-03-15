@@ -284,8 +284,20 @@
         });
     });
 
-    // 5. Initialize (Place elements on the page)
-    currentScript.parentNode.insertBefore(container, currentScript);
+    // 5. INITIALIZE (Universal Mode)
+
+    // Create a wrapper so we don't mess with the parent's layout
+    const wrapper = document.createElement('div');
+    wrapper.style.display = 'inline-block';
+    wrapper.style.verticalAlign = 'middle';
+    wrapper.appendChild(container);
+
+    // Insert the button exactly where the script tag is
+    if (currentScript && currentScript.parentNode) {
+        currentScript.parentNode.insertBefore(wrapper, currentScript);
+    }
+
+    // Always put the modal at the end of the body
     document.body.appendChild(overlay);
 
 })();
